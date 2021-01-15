@@ -38,7 +38,8 @@ RUN tar -xvf PCemV17Linux.tar.gz -C PCem
 RUN rm PCemV17Linux.tar.gz
 WORKDIR /PCem
 
-RUN ./configure && make && make install
+RUN ./configure --enable-networking
+RUN make && make install
 RUN useradd -ms /bin/bash pcem_user
 
 FROM pcem_build as pcem_run
